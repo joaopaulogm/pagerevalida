@@ -1,0 +1,393 @@
+/* ============================================================
+   Page Revalida — Design Tokens
+   Colors, type, radii, shadows, spacing.
+   Load on every page. Works in light + dark.
+   ============================================================ */
+
+/* ---------- Fonts (Google Fonts substitutes) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* ============================================================
+     COLORS — raw palette
+     Inspired by medical scrubs + high-tech hospitals.
+     Navy = trust. Teal = life/vitals. Slate = data. Ivory = paper.
+     ============================================================ */
+
+  /* Navy (primary — headers, primary buttons, focus) */
+  --navy-950: #06111f;
+  --navy-900: #0a1a2f;
+  --navy-800: #0f2644;
+  --navy-700: #143459;
+  --navy-600: #1c4676;
+  --navy-500: #275d97;
+  --navy-400: #4a7eb8;
+  --navy-300: #82a6cd;
+  --navy-200: #bcd0e3;
+  --navy-100: #e3ecf5;
+  --navy-50:  #f2f6fb;
+
+  /* Teal (accent — vitals, streaks, highlights) */
+  --teal-900: #0b3b3f;
+  --teal-800: #0f5458;
+  --teal-700: #106f74;
+  --teal-600: #0f8a90;
+  --teal-500: #14a5ab;
+  --teal-400: #3ebfc4;
+  --teal-300: #7ed5d8;
+  --teal-200: #bce8ea;
+  --teal-100: #e1f5f6;
+  --teal-50:  #f0fafa;
+
+  /* Slate (neutrals for data-dense UI) */
+  --slate-950: #0b1220;
+  --slate-900: #111a2c;
+  --slate-800: #1e293b;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748b;
+  --slate-400: #94a3b8;
+  --slate-300: #cbd5e1;
+  --slate-200: #e2e8f0;
+  --slate-150: #ecf0f5;
+  --slate-100: #f1f5f9;
+  --slate-50:  #f8fafc;
+
+  /* Ivory / paper (reading surfaces) */
+  --ivory: #fbfaf6;
+  --paper: #fdfcf8;
+
+  /* Semantic data colors (heatmaps, charts, Raio-X matrix) */
+  --success-700: #0e7a53;
+  --success-500: #12a56e;
+  --success-200: #b8ecd5;
+  --success-50:  #ecfaf3;
+
+  --warn-700: #a56411;
+  --warn-500: #d98912;
+  --warn-200: #f6d79a;
+  --warn-50:  #fdf4e3;
+
+  --danger-700: #9a1f2b;
+  --danger-500: #d0323f;
+  --danger-200: #f4c1c6;
+  --danger-50:  #fcecee;
+
+  --info-700: #1e4fa8;
+  --info-500: #2e6ed6;
+  --info-200: #c3d5f4;
+  --info-50:  #eaf1fc;
+
+  /* Raio-X matrix — 4 distinct, calibrated hues */
+  --rx-cc: var(--success-500); /* Certo com Convicção */
+  --rx-cd: var(--teal-500);    /* Certo com Dúvida   */
+  --rx-ec: var(--danger-500);  /* Errado com Convicção — falsa certeza */
+  --rx-ed: var(--warn-500);    /* Errado com Dúvida  */
+
+  /* ============================================================
+     SEMANTIC — light mode defaults
+     ============================================================ */
+  --bg-app: var(--slate-50);
+  --bg-surface: #ffffff;
+  --bg-surface-2: var(--slate-100);
+  --bg-sunken: var(--slate-150);
+  --bg-reading: var(--ivory);
+  --bg-inverted: var(--navy-900);
+
+  --fg-1: var(--navy-900);     /* headings */
+  --fg-2: var(--slate-800);    /* body */
+  --fg-3: var(--slate-600);    /* secondary */
+  --fg-4: var(--slate-500);    /* hint / muted */
+  --fg-on-accent: #ffffff;
+  --fg-on-inverted: #ffffff;
+
+  --border-1: var(--slate-200);
+  --border-2: var(--slate-300);
+  --border-strong: var(--slate-400);
+  --border-focus: var(--navy-500);
+
+  --accent: var(--teal-500);
+  --accent-hover: var(--teal-600);
+  --accent-soft: var(--teal-100);
+
+  --primary: var(--navy-800);
+  --primary-hover: var(--navy-900);
+  --primary-soft: var(--navy-100);
+
+  /* ============================================================
+     TYPOGRAPHY
+     Fraunces (modern serif, optical sizing) — display/editorial
+     Inter — UI + body
+     JetBrains Mono — data, tags, codes
+     ============================================================ */
+  --font-display: 'Fraunces', 'Times New Roman', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Fluid type scale (desktop-first, minor third) */
+  --fs-12: 0.75rem;
+  --fs-13: 0.8125rem;
+  --fs-14: 0.875rem;
+  --fs-15: 0.9375rem;
+  --fs-16: 1rem;
+  --fs-18: 1.125rem;
+  --fs-20: 1.25rem;
+  --fs-24: 1.5rem;
+  --fs-28: 1.75rem;
+  --fs-32: 2rem;
+  --fs-40: 2.5rem;
+  --fs-48: 3rem;
+  --fs-64: 4rem;
+
+  --lh-tight: 1.1;
+  --lh-snug: 1.25;
+  --lh-normal: 1.5;
+  --lh-reading: 1.65;
+
+  --tracking-tight: -0.02em;
+  --tracking-snug: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+  --tracking-caps: 0.08em;
+
+  /* ============================================================
+     RADII
+     Rounded but never playful. Data-grade.
+     ============================================================ */
+  --r-2: 2px;
+  --r-4: 4px;
+  --r-6: 6px;
+  --r-8: 8px;
+  --r-10: 10px;
+  --r-12: 12px;
+  --r-16: 16px;
+  --r-20: 20px;
+  --r-full: 9999px;
+
+  /* ============================================================
+     SPACING (4px base)
+     ============================================================ */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+
+  /* ============================================================
+     SHADOWS
+     Layered, low-opacity. Navy-tinted, never pure black.
+     ============================================================ */
+  --shadow-xs: 0 1px 2px rgba(15, 38, 68, 0.06);
+  --shadow-sm: 0 1px 3px rgba(15, 38, 68, 0.08), 0 1px 2px rgba(15, 38, 68, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 38, 68, 0.08), 0 2px 4px rgba(15, 38, 68, 0.04);
+  --shadow-lg: 0 16px 32px rgba(15, 38, 68, 0.10), 0 4px 8px rgba(15, 38, 68, 0.05);
+  --shadow-xl: 0 28px 56px rgba(15, 38, 68, 0.14), 0 8px 16px rgba(15, 38, 68, 0.06);
+  --shadow-focus: 0 0 0 3px rgba(39, 93, 151, 0.22);
+  --shadow-focus-teal: 0 0 0 3px rgba(20, 165, 171, 0.26);
+  --shadow-glow-teal: 0 0 0 1px rgba(20, 165, 171, 0.35), 0 6px 24px rgba(20, 165, 171, 0.30);
+  --shadow-inset: inset 0 1px 2px rgba(15, 38, 68, 0.06);
+
+  /* ============================================================
+     MOTION
+     ============================================================ */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 120ms;
+  --dur-med: 220ms;
+  --dur-slow: 420ms;
+
+  /* ============================================================
+     LAYOUT
+     ============================================================ */
+  --sidebar-w: 248px;
+  --sidebar-w-collapsed: 72px;
+  --topbar-h: 64px;
+  --container-max: 1280px;
+  --reading-max: 72ch;
+}
+
+/* ============================================================
+   DARK MODE
+   Reading-comfortable. Deep navy, not pure black.
+   ============================================================ */
+[data-theme="dark"] {
+  --bg-app: var(--navy-950);
+  --bg-surface: var(--navy-900);
+  --bg-surface-2: var(--navy-800);
+  --bg-sunken: #04101b;
+  --bg-reading: #0c1b2e;
+  --bg-inverted: var(--ivory);
+
+  --fg-1: #f1f6fb;
+  --fg-2: #d7e1ee;
+  --fg-3: #9fb1c7;
+  --fg-4: #7a8fa8;
+  --fg-on-accent: #04101b;
+  --fg-on-inverted: var(--navy-900);
+
+  --border-1: #1a2a44;
+  --border-2: #23375a;
+  --border-strong: #35527e;
+  --border-focus: var(--teal-400);
+
+  --accent: var(--teal-400);
+  --accent-hover: var(--teal-300);
+  --accent-soft: rgba(20, 165, 171, 0.18);
+
+  --primary: var(--teal-400);
+  --primary-hover: var(--teal-300);
+  --primary-soft: rgba(20, 165, 171, 0.12);
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45), 0 2px 4px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================================
+   BASE ELEMENTS
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { color-scheme: light dark; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-15);
+  line-height: var(--lh-normal);
+  color: var(--fg-2);
+  background: var(--bg-app);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings — Fraunces display, tight tracking */
+h1, .h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-48);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+  font-variation-settings: "opsz" 96;
+  text-wrap: balance;
+}
+h2, .h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-32);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+  font-variation-settings: "opsz" 48;
+  text-wrap: balance;
+}
+h3, .h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-24);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-snug);
+  color: var(--fg-1);
+  font-variation-settings: "opsz" 24;
+}
+h4, .h4 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--fs-18);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+
+/* Paragraph + body */
+p, .body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-15);
+  line-height: var(--lh-normal);
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+.body-lg { font-size: var(--fs-18); line-height: var(--lh-reading); }
+.body-sm { font-size: var(--fs-13); }
+
+/* Reading mode (Acervo) — Fraunces on ivory */
+.reading {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-18);
+  line-height: var(--lh-reading);
+  letter-spacing: 0;
+  color: var(--fg-1);
+  background: var(--bg-reading);
+  max-width: var(--reading-max);
+  font-variation-settings: "opsz" 14;
+}
+
+/* Labels / eyebrow / meta */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-12);
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+.label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-13);
+  font-weight: 500;
+  color: var(--fg-2);
+}
+.caption {
+  font-family: var(--font-sans);
+  font-size: var(--fs-12);
+  color: var(--fg-4);
+}
+
+/* Metric — big number, tabular */
+.metric {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-40);
+  line-height: 1;
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+  font-variant-numeric: tabular-nums;
+  font-variation-settings: "opsz" 48;
+}
+
+/* Mono — data, question tags, timer */
+.mono, code, kbd, samp {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Links */
+a {
+  color: var(--navy-600);
+  text-decoration-color: var(--navy-200);
+  text-underline-offset: 2px;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+a:hover { color: var(--navy-800); text-decoration-color: currentColor; }
+[data-theme="dark"] a { color: var(--teal-300); text-decoration-color: var(--teal-800); }
+
+/* Focus ring */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: var(--r-4);
+}
+
+/* Scrollbars (subtle) */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--slate-300); border-radius: var(--r-full); }
+::-webkit-scrollbar-thumb:hover { background: var(--slate-400); }
+[data-theme="dark"] ::-webkit-scrollbar-thumb { background: var(--slate-700); }

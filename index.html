@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Revalida</title>
+  <link rel="stylesheet" href="colors_and_type.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg-app); }
+
+    /* Acervo placeholder */
+    .acervo-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      gap: 16px;
+      text-align: center;
+      color: var(--fg-3);
+    }
+    .acervo-placeholder h2 {
+      font-family: var(--font-display);
+      font-size: var(--fs-28);
+      color: var(--fg-1);
+      margin-top: 8px;
+    }
+    .acervo-placeholder p {
+      font-size: var(--fs-14);
+      max-width: 40ch;
+      line-height: var(--lh-reading);
+    }
+    .acervo-icon {
+      width: 64px; height: 64px;
+      border-radius: 16px;
+      background: var(--navy-100);
+      color: var(--navy-700);
+      display: flex; align-items: center; justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React + ReactDOM -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- Babel standalone (transforms JSX in-browser) -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Design system components (load order matters) -->
+  <script type="text/babel" src="src/components.jsx"></script>
+  <script type="text/babel" src="src/Shell.jsx"></script>
+  <script type="text/babel" src="src/Dashboard.jsx"></script>
+  <script type="text/babel" src="src/XRay.jsx"></script>
+  <script type="text/babel" src="src/Lab.jsx"></script>
+
+  <!-- App root -->
+  <script type="text/babel">
+    const { useState } = React;
+
+    const AcervoPlaceholder = () => (
+      <div className="acervo-placeholder">
+        <div className="acervo-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+          </svg>
+        </div>
+        <h2>Acervo de materiais</h2>
+        <p>Biblioteca de diretrizes, resumos e capítulos com leitor imersivo. Em breve.</p>
+      </div>
+    );
+
+    const SCREENS = {
+      dashboard: Dashboard,
+      xray: XRay,
+      acervo: AcervoPlaceholder,
+      lab: Lab,
+    };
+
+    const App = () => {
+      const [screen, setScreen] = useState('dashboard');
+      const Screen = SCREENS[screen] || Dashboard;
+      return (
+        <Shell current={screen} onNavigate={setScreen}>
+          <Screen />
+        </Shell>
+      );
+    };
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
