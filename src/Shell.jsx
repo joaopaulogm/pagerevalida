@@ -2,10 +2,11 @@
 const { useState: useStateShell } = React;
 
 const SHELL_NAV = [
-  { id: 'dashboard', label: 'Dashboard', icon: 'dashboard' },
-  { id: 'xray', label: 'Banco de questões', icon: 'list', badge: 'Raio-X' },
-  { id: 'acervo', label: 'Acervo', icon: 'book' },
-  { id: 'lab', label: 'Laboratório de IA', icon: 'sparkles' },
+  { id: 'dashboard', label: 'Dashboard',        icon: 'dashboard' },
+  { id: 'provas',    label: 'Provas INEP',       icon: 'list',     badge: 'Novo' },
+  { id: 'xray',      label: 'Banco de questões', icon: 'scan',     badge: 'Raio-X' },
+  { id: 'acervo',    label: 'Acervo',            icon: 'book' },
+  { id: 'lab',       label: 'Laboratório de IA', icon: 'sparkles' },
 ];
 
 const Shell = ({ current, onNavigate, children }) => {
